@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MenstrualCycle_sTest {
+class TestForMenstrualCycle {
 
     @Test
     void testIfTheAppWorks() {
@@ -112,9 +112,6 @@ class MenstrualCycle_sTest {
         assertThrows(InputMismatchException.class,() -> myMenstrualCycle_s.setGender("male"));
 
     }
-
-    @Test
-    void
 
 
 }

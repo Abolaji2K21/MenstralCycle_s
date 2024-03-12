@@ -85,10 +85,13 @@ public class MenstrualCycle_s {
 
     public LocalDate calculateAndDisplayCycleInfo() {
         LocalDate checkPeriodDate = LocalDate.of(currentYear, getLastPeriodMonth(), getLastPeriodDay());
+        int daysToOvulation = validateAverageCycle();
+        LocalDate ovulationDate = checkPeriodDate.plusDays(daysToOvulation);
+        LocalDate fertileStartDate = ovulationDate.minusDays(5);
+        LocalDate fertileEndDate = ovulationDate.plusDays(4);
+        LocalDate safeStartDate = checkPeriodDate.plusDays(11);
         LocalDate nextPeriodDate = checkPeriodDate.plusDays(getAverageCycle());
-        LocalDate ovulationDate = checkPeriodDate.plusDays(getAverageCycle() - 14);
-        LocalDate fertileDate = checkPeriodDate.plusDays(ovulationDate.getDayOfMonth() - 5);
-        LocalDate safeDate = checkPeriodDate.plusDays(checkPeriodDate.getDayOfMonth() + 10);
+
 
 
 
@@ -96,10 +99,21 @@ public class MenstrualCycle_s {
         System.out.println("Congratulations! You Are Not Pregnant");
         System.out.println("Last Period Date: " + checkPeriodDate);
         System.out.println("Ovulation Date: " + ovulationDate);
-        System.out.println("Safe Date: " + safeDate);
-        System.out.println("Fertile Date: " + fertileDate);
+        System.out.println("Safe Date: " + safeStartDate);
+        System.out.println("Fertile Start Date: " + fertileStartDate + "Fertile End Date: " + fertileEndDate);
         System.out.print("Next Period Date: " + nextPeriodDate);
         return nextPeriodDate;
 
+    }
+
+    private int validateAverageCycle() {
+        int abnormalForm = getAverageCycle() - 28;
+        int daysToOvulation;
+        if (abnormalForm < 0) {
+            daysToOvulation = 14 - Math.abs(abnormalForm);
+        } else {
+            daysToOvulation = 14 + abnormalForm;
+        }
+        return daysToOvulation;
     }
 }
