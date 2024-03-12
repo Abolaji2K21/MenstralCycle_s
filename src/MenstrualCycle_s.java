@@ -25,7 +25,11 @@ public class MenstrualCycle_s {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        if(gender.equalsIgnoreCase("male")){
+            throw new InputMismatchException("Invalid input. You need to be a male to use this app incoming bob- risky");
+        } else {
+            this.gender = gender;
+        }
     }
 
     public int getLastPeriodDay() {
