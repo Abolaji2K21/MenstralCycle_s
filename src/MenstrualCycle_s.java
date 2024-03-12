@@ -83,8 +83,9 @@ public class MenstrualCycle_s {
         LocalDate checkPeriodDate = LocalDate.of(currentYear, getLastPeriodMonth(), getLastPeriodDay());
         LocalDate nextPeriodDate = checkPeriodDate.plusDays(getAverageCycle());
         LocalDate ovulationDate = checkPeriodDate.plusDays(getAverageCycle() - 14);
-        LocalDate safeDate = checkPeriodDate.plusDays(ovulationDate.getDayOfMonth() + 5);
         LocalDate fertileDate = checkPeriodDate.plusDays(ovulationDate.getDayOfMonth() - 5);
+        LocalDate safeDate = checkPeriodDate.plusDays(checkPeriodDate.getDayOfMonth() + 10);
+
 
 
         System.out.println("\nCycle Information:");
