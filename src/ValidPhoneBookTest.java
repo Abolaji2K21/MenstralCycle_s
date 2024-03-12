@@ -79,25 +79,21 @@ public class ValidPhoneBookTest {
     void eraseContact_NonExistingContact_ShouldNotModifyPhonebook() {
         ValidPhoneBook phoneBook = new ValidPhoneBook();
         phoneBook.addContact("Bee_Jay", "1234567890");
-        phoneBook.eraseContact("Jane Smith");
-        assertEquals(1, phoneBook.getContactNames().size());
-        assertEquals(1, phoneBook.getPhoneNumbers().size());
+        assertThrows(IllegalArgumentException.class, () -> phoneBook.eraseContact("Jane Smith"));
     }
 
     @Test
     void editContactName_NonExistingContact_ShouldNotModifyPhonebook() {
         ValidPhoneBook phoneBook = new ValidPhoneBook();
         phoneBook.addContact("Bee_Jay", "1234567890");
-        phoneBook.editContactName("Jane Smith", "New Name");
-        assertEquals("Bee_Jay", phoneBook.getContactNames().get(0));
+        assertThrows(IllegalArgumentException.class, ()->phoneBook.editContactName("Jane Smith", "New Name"));
     }
 
     @Test
     void editContactPhoneNumber_NonExistingContact_ShouldNotModifyPhonebook() {
         ValidPhoneBook phoneBook = new ValidPhoneBook();
         phoneBook.addContact("Bee_Jay", "1234567890");
-        phoneBook.editContactPhoneNumber("Jane Smith", "9876543210");
-        assertEquals("1234567890", phoneBook.getPhoneNumbers().get(0));
+        assertThrows(IllegalArgumentException.class, ()->phoneBook.editContactPhoneNumber("Jane Smith", "9876543210"));
     }
 
     @Test

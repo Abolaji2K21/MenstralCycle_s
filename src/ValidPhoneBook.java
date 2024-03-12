@@ -40,30 +40,31 @@ public class ValidPhoneBook {
     }
 
     public void eraseContact(String contactName) {
-        for (int i = 0; i < contactNames.size(); i++) {
-            if (contactNames.get(i).equalsIgnoreCase(contactName)) {
-                contactNames.remove(i);
-                phoneNumbers.remove(i);
-                return;
-            }
+        int index = contactNames.indexOf(contactName);
+        if (index == -1) {
+            throw new IllegalArgumentException("Contact not found");
         }
+        contactNames.remove(index);
+        phoneNumbers.remove(index);
     }
 
+
+
     public void editContactName(String contactName, String newName) {
-        for (int i = 0; i < contactNames.size(); i++) {
-            if (contactNames.get(i).equalsIgnoreCase(contactName)) {
-                contactNames.set(i, newName);
-                return;
-            }
+        int index = contactNames.indexOf(contactName);
+        if (index != -1) {
+            contactNames.set(index, newName);
+        } else {
+            throw new IllegalArgumentException("Contact not found");
         }
     }
 
     public void editContactPhoneNumber(String contactName, String newNumber) {
-        for (int i = 0; i < contactNames.size(); i++) {
-            if (contactNames.get(i).equalsIgnoreCase(contactName)) {
-                phoneNumbers.set(i, newNumber);
-                return;
-            }
+        int index = contactNames.indexOf(contactName);
+        if (index != -1) {
+            phoneNumbers.set(index, newNumber);
+        } else {
+            throw new IllegalArgumentException("Contact not found");
         }
     }
 
