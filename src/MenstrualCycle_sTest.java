@@ -50,10 +50,10 @@ class MenstrualCycle_sTest {
     void calculateAndDisplayCycleInfo() {
         MenstrualCycle_s myMenstrualCycle_s = new MenstrualCycle_s();
 
-        myMenstrualCycle_s.setAverageCycle(28);
-        myMenstrualCycle_s.setLastPeriodDay(15);
-        myMenstrualCycle_s.setLastPeriodMonth(05);
-        assertEquals(LocalDate.of(2024, 06, 12), myMenstrualCycle_s.calculateAndDisplayCycleInfo());
+        myMenstrualCycle_s.setAverageCycle(35);
+        myMenstrualCycle_s.setLastPeriodDay(1);
+        myMenstrualCycle_s.setLastPeriodMonth(3);
+        assertEquals(LocalDate.of(2024, 04, 05), myMenstrualCycle_s.calculateAndDisplayCycleInfo());
     }
 
 
